@@ -1,0 +1,8 @@
+### Debian ###
+# Packages file #
+*.deb
+
+# Packages Pool #
+pool/*
+
+# (c)2024 @hebimalu0000
