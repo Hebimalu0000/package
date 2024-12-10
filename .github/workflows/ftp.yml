@@ -24,15 +24,14 @@ jobs:
       # Runs a single command using the runners shell
       - name: Sync files
         run: |
-          WEBROOT="/htdocs"
+          export WEBROOT="/apt.package-hebimalu0000.f5.si"
 
           lftp -f "
           set ssl:verify-certificate false
           open ftpupload.net
-          user $FTP_USERNAME $FTP_PASSWORD
+          user ${{ secrets.FTP_USERNAME }} ${{ secrets.FTP_PASSWORD }}
           lcd ./
-          mirror --continue --reverse --delete --verbose --exclude=storage/ --exclude=.env --exclude=public/hot/ --exclude=public/storage/ ./ $WEBROOT
-          mirror --continue --reverse --verbose ./storage/ $WEBROOT/storage/
+          mirror --continue --reverse --verbose ./public/ $WEBROOT/htdocs/
           bye
           "
 
