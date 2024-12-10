@@ -24,6 +24,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Sync files
         run: |
+          sudo apt install lftp
+          
           export WEBROOT="/apt.package-hebimalu0000.f5.si"
 
           lftp -f "
