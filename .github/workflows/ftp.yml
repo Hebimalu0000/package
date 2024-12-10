@@ -23,9 +23,16 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./public/
+        run: |
+          WEBROOT="/htdocs"
+
+          lftp -f "
+          set ssl:verify-certificate false
+          open ftpupload.net
+          user $FTP_USERNAME $FTP_PASSWORD
+          lcd ./
+          mirror --continue --reverse --delete --verbose --exclude=storage/ --exclude=.env --exclude=public/hot/ --exclude=public/storage/ ./ $WEBROOT
+          mirror --continue --reverse --verbose ./storage/ $WEBROOT/storage/
+          bye
+          "
+
