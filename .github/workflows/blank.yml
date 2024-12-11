@@ -37,7 +37,7 @@ jobs:
           lftp -f "
           set ssl:verify-certificate false
           open ftpupload.net
-          user ${{secret.FTP_USERNAME}} ${{secret.FTP_PASSWORD}}
+          user ${{secrets.FTP_USERNAME}} ${{secrets.FTP_PASSWORD}}
           lcd ./
           mirror --continue --reverse --delete ./public/ $WEBROOT
           bye
