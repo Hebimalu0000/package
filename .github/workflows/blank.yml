@@ -39,6 +39,6 @@ jobs:
           open ftpupload.net
           user ${{secret.FTP_USERNAME}} ${{secret.FTP_PASSWORD}}
           lcd ./
-          mirror --continue --reverse --delete ./ $WEBROOT
+          mirror --continue --reverse --delete ./public/ $WEBROOT
           bye
           "
