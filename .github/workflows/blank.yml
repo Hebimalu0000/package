@@ -32,7 +32,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          WEBROOT="apt.package-hebimalu0000/htdocs"
+          WEBROOT="apt.package-hebimalu0000.f5.si/htdocs"
 
           lftp -f "
           set ssl:verify-certificate false
