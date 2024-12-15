@@ -27,7 +27,12 @@ jobs:
       with:
         repository: Hebimalu0000/linux-app
         ref: build
-        path: public
+        path: tmp
+
+    - name: After run program
+      run: |
+        sudo cp tmp public
+        sudo rm -rf tmp
 
     - name: Commit and push changes
       run: |
