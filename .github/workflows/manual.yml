@@ -1,25 +1,16 @@
-# This is a basic workflow that is manually triggered
-
 name: Copy [linux-app] build
 
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
 on:
   workflow_dispatch:
   schedule:
     - cron: '0 15 * * *' #24:00(0:00)
     # - cron: '0 3 * * *' #12:00
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "greet"
-  greet:
-    # The type of runner that the job will run on
+  Main-Program:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Runs a single command using the runners shell
     - name: Checkout
       uses: actions/checkout@v4
 
@@ -38,8 +29,8 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git config user.name "auto-push"
-        git config user.email "auto-push@example.com"
-        git add .
-        git commit -m "auto push from ci" || echo "No changes to commit"
-        git push
+        sudo git config user.name "auto-push"
+        sudo git config user.email "auto-push@example.com"
+        sudo git add .
+        sudo git commit -m "auto push from ci" || echo "No changes to commit"
+        sudo git push
