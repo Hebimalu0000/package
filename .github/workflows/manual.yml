@@ -31,7 +31,9 @@ jobs:
 
     - name: Copy and Delete
       run: |
+        tree checkouted/
         sudo cp -r checkouted/. public/
+        tree public/
         sudo rm -rf checkouted
 
     - name: Commit and push changes
