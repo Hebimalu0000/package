@@ -31,7 +31,7 @@ jobs:
 
     - name: After run program
       run: |
-        sudo cp tmp public
+        sudo cp -rp tmp public
         sudo rm -rf tmp
 
     - name: Commit and push changes
