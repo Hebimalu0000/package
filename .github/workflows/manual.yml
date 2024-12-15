@@ -27,7 +27,7 @@ jobs:
       with:
         repository: Hebimalu0000/linux-app
         ref: build
-        path: pool
+        path: public
 
     - name: Commit and push changes
       run: |
