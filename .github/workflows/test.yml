@@ -20,6 +20,7 @@ jobs:
 
       - name: Run Test
         run: |
+          sudo cat /etc/apt/sources.list
           sudo sh -c 'echo "deb http://apt.package-hebimalu0000.f5.si main" > /etc/apt/sources.list'
           sudo sh -c 'echo "deb-src http://apt.package-hebimalu0000.f5.si main" > /etc/apt/sources.list'
           sudo apt update
