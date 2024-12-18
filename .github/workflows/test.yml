@@ -1,0 +1,29 @@
+name: Package Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Package'
+        required: true
+      command:
+        description: 'Command'
+        required: true
+
+jobs:
+  test:
+    name: deploy to staging
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Test
+        run: |
+          sudo sh -c 'echo "deb http://apt.package-hebimalu0000.f5.si main" > /etc/apt/sources.list.d/default.list'
+          sudo sh -c 'echo "deb-src http://apt.package-hebimalu0000.f5.si main" > /etc/apt/sources.list.d/default.list'
+          sudo apt update
+          sudo apt install ${{ github.event.inputs.name }}
+          ${{ github.event.inputs.command }}
+          
+          
