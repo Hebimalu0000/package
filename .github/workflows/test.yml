@@ -21,7 +21,7 @@ jobs:
       - name: Run Test
         run: |
           sudo cat /etc/apt/apt-mirrors.txt
-          sudo sh -c 'echo "deb http://apt.package-hebimalu0000.f5.si main" > /etc/apt/sources.list'
+          sudo sh -c 'echo "http://apt.package-hebimalu0000.f5.si	priority:4" > /etc/apt/apt-mirrors.txt'
           sudo sh -c 'echo "deb-src http://apt.package-hebimalu0000.f5.si main" > /etc/apt/sources.list'
           sudo apt update
           sudo apt install ${{ github.event.inputs.name }}
